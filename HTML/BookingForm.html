@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Discover Kolhapur - Booking</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* Global */
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: rgb(42, 144, 202);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #2e86c1;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .logo { height: 40px; width: auto; object-fit: contain; }
+    nav a { color: white; text-decoration:none; margin:0 10px; }
+    nav a:not(:last-child)::after { content: "|"; margin-left: 10px; color: white; }
+
+    /* FORM WRAPPER */
+    h2 { text-align:center; color:white; margin-top:20px; }
+
+    form {
+      background: #fff;
+      width: 90%;
+      max-width: 760px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    fieldset {
+      border: 2px solid #2e86c1;
+      padding: 18px;
+      border-radius: 8px;
+    }
+
+    legend {
+      color: #2e86c1;
+      font-weight: 700;
+      padding: 0 8px;
+    }
+
+    /* Stable table layout that won't overflow */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed; /* important: columns don't expand beyond width */
+    }
+
+    /* first column (labels) fixed width, second column flexible */
+    table td:first-child { width: 180px; padding-right: 12px; vertical-align: middle; }
+    table td:last-child { width: calc(100% - 180px); }
+
+    td { padding: 8px 6px; vertical-align: middle; }
+
+    label {
+      display: inline-block;
+      font-weight: 600;
+      min-width: 0; /* avoid forcing extra space */
+    }
+
+    /* Inputs: constrained to available cell width */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      max-width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    textarea { resize: vertical; min-height: 80px; }
+
+    /* keep checkboxes/radios in one line */
+    .checkbox-group {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: nowrap;
+      overflow: auto; /* won't wrap, but will allow horizontal scroll if extremely narrow */
+    }
+
+    input[type="checkbox"], input[type="radio"] { transform: scale(1.05); margin-right:6px; }
+
+    /* Buttons */
+    .actions { display:flex; gap:10px; align-items:center; }
+    input[type="submit"], input[type="reset"] {
+      background: #2e86c1;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    input[type="submit"]:hover, input[type="reset"]:hover { background: #1b4f72; }
+
+    /* Full-width marquee (outside the form) */
+    .promo {
+      width: 100%;
+      background-color: rgb(1,25,36);
+      color: rgb(213,216,8);
+      padding: 8px 0;
+      font-weight: 700;
+      margin: 14px 0 0 0;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    footer {
+      background: #2e86c1;
+      color: #fff;
+      text-align: center;
+      padding: 15px 20px;
+      margin-top: auto;
+    }
+    .sicons a {
+  margin: 0 10px;
+  color: #cc0f0f;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+
+    /* ===== Responsive: small screens ===== */
+    @media (max-width: 600px) {
+      /* stack labels above inputs on narrow screens */
+      table td:first-child, table td:last-child { display: block; width: 100%; }
+      table tr { display: block; margin-bottom: 12px; }
+      table td:first-child { margin-bottom: 6px; }
+      .checkbox-group { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <img src="../Image/Ambabaiface.png" alt="logo" class="logo">
+      <h1>Discover Kolhapur</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="Places.html">Places</a>
+      <a href="gallary.html">Gallery</a>
+      <a href="BookingForm.html">Booking</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <h2><u>Book Your Trip</u></h2>
+
+  <form action="#" method="POST">
+    <fieldset>
+      <legend>Booking Details</legend>
+      <table>
+        <tr>
+          <td><label for="name">Full Name:</label></td>
+          <td><input id="name" name="name" type="text" placeholder="Enter full name" required></td>
+        </tr>
+
+        <tr>
+          <td><label for="email">Email:</label></td>
+          <td><input id="email" name="email" type="email" placeholder="example@mail.com" required></td>
+        </tr>
+
+        <tr>
+          <td><label for="password">Password:</label></td>
+          <td><input id="password" name="password" type="password" placeholder="Choose a password"></td>
+        </tr>
+
+        <tr>
+          <td><label for="phone">Phone Number:</label></td>
+          <td><input id="phone" name="phone" type="tel" placeholder="9876543210" pattern="[0-9]{10}"></td>
+        </tr>
+
+        <tr>
+          <td><label for="travelers">No. of Travelers:</label></td>
+          <td><input id="travelers" name="travelers" type="number" min="1" max="10" value="1"></td>
+        </tr>
+
+        <tr>
+          <td><label for="date">Travel Date:</label></td>
+          <td><input id="date" name="date" type="date" required></td>
+        </tr>
+
+        <tr>
+          <td><label for="destination">Destination:</label></td>
+          <td>
+            <select id="destination" name="destination">
+              <option>Panhala</option>
+              <option>Jotiba</option>
+              <option>Amboli</option>
+              <option>Khidrapur</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label>Gender:</label></td>
+          <td>
+            <div class="checkbox-group" role="group" aria-label="Gender">
+              <label><input type="radio" name="gender" value="Male"> Male</label>
+              <label><input type="radio" name="gender" value="Female"> Female</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label>Travel Type:</label></td>
+          <td>
+            <div class="checkbox-group" role="group" aria-label="Travel Type">
+              <label><input type="checkbox" name="traveltype" value="Adventure"> Adventure</label>
+              <label><input type="checkbox" name="traveltype" value="Historical"> Historical</label>
+              <label><input type="checkbox" name="traveltype" value="Leisure"> Leisure</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="document">Upload ID Proof:</label></td>
+          <td><input id="document" name="document" type="file"></td>
+        </tr>
+
+        <tr>
+          <td><label for="message">Additional Comments:</label></td>
+          <td><textarea id="message" name="message" placeholder="Any special requests?"></textarea></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td class="actions">
+            <input type="submit" value="Book">
+            <input type="reset" value="Clear">
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+  </form>
+
+  <!-- full width promo (outside the centered form) -->
+  <div class="promo">
+    <marquee behavior="scroll" scrollamount="10">🎉 Today's offer: Get 20% discount on your booking! Hurry up! 🙂</marquee>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Discover Kolhapur. All Rights Reserved.</p>
+    <h2>Connect with us</h2>
+    <div class="sicons">
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      
+    </div>
+    
+  </footer>
+</body>
+</html>
